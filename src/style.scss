@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css?family=Space+Mono');
+body {
+  font:sans-serif;
+}
+*,*:after,*:before {
+  box-sizing:border-box;
+}
+.handle {
+  position: absolute;
+  width:250px;
+  border-radius:15px;
+  left:15px;
+  top:15px;
+  bottom:15px;
+  padding:15px;
+  background:
+    radial-gradient(circle at center,
+      rgba(255,255,255,.35),
+      rgba(255,255,255,0) 20%,
+      rgba(255,255,255,0) 21%),
+    radial-gradient(circle at center,
+      rgba(0,0,0,.2),
+      rgba(0,0,0,0) 20%,
+      rgba(0,0,0,0) 21%),
+    radial-gradient(circle farthest-corner at center,
+      grey,
+      lighten(gray,15%));
+	background-size: 10px 10px, 10px 10px, 100% 100%;
+	background-position: 1px 1px, 0px 0px, center center;
+}
+.display {
+  background:lime;
+  background-image:repeating-linear-gradient(0deg,
+    darken(lime,5%) 0px,
+    darken(lime,5%) 2px,
+    transparent 2px,
+    transparent 10px),
+  repeating-linear-gradient(90deg,
+    darken(lime,5%),
+    darken(lime,5%) 2px,
+    transparent 2px,
+    transparent 9px);
+  border:11px solid #333;
+  border-radius:8px;
+  width:100%;
+  padding:7px 17px;
+  font-family:Space Mono, monospace;
+  height:80px;
+  overflow-y:hidden;
+  color:#000;
+  line-height:1.45;
+  box-shadow:inset 0px 0px 0px 2px black, 0px 0px 0px 2px black;
+  margin-bottom:10px;
+}
+.buttons {
+  display:flex;
+  width:100%;
+  height:470px;
+  justify-content:space-around;
+  flex-wrap:wrap-reverse;
+}
+.btn-container {
+  flex-basis:50%;
+  position:relative;
+  
+  &.bottom {
+    flex-basis:100%;
+  }
+}
+button.btn-floor {
+  position:relative;
+  border-radius:50%;
+  width:60px;
+  height:60px;
+  border:2px solid lightgray;
+  box-shadow:inset 0px 0px 2px 1px gray, inset 0px -3px 4px rgba(0,0,0,0.3), inset 0px 3px 4px rgba(255,255,255,0.6), 0px -2px 3px rgba(0,0,0,0.6), 0px 1px 2px rgba(255,255,255,0.7), 0px 0px 1px 1px black, 0px 0px 0px 5px gray, 0px 0px 1px 6px black;
+  display:block;
+  cursor:pointer;
+  left:50%;
+  top:50%;
+  transform:translate(-50%, -50%);
+  font-size:23px;
+  color:#3c3c3c;
+  outline:none;
+  
+  &:hover {
+    border-color:lime;
+  }
+  &:active, &.active {
+    background:lime;
+    color:lighten(lime,40%);
+    border-color:green;
+  }
+}
+
+.building {
+  width: 300px;
+  position: absolute;
+  background: #526bd1;
+  background-image:linear-gradient(
+      transparentize(#ccc26b,.4), 
+      transparentize(#ccc26b,.4)
+  ),url("http://gdj.graphicdesignjunction.com/wp-content/uploads/2011/05/photoshop-texture-35.jpg");
+  background-size:cover,cover;
+  height: 840px;
+  left: 650px;
+  top: 50px;
+  &:before {
+    position:absolute;
+    display:block;
+    content:"";
+    background:inherit;
+    top:-30px;
+    left:85px;
+    width:130px;
+    height:30px;
+  }
+  &:after {
+    position:absolute;
+    display:block;
+    content:"";
+    background:hsl(0deg 100% 50%);
+    bottom:-20px;
+    left:-15px;
+    width:350px;
+    height:20px;
+  }
+}
+.floors {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: stretch;
+  flex-direction: column-reverse;
+  
+  .floor {
+    position:relative;
+    height: 100%;
+    
+    &:after {
+      content:"";
+      display:block;
+      width:100%;
+      position:absolute;
+      top:0;
+      border-top:10px solid turquoise;
+      opacity:.8;
+    }
+    
+    .floor-door {
+      background:silver;
+      background-image:repeating-linear-gradient(
+        90deg,
+        transparent 0px,
+        transparent 33px,
+        #333 33px,
+        #333 37px,
+        transparent 37px,
+        transparent 70px
+      );
+      width:80px;
+      height:55px;
+      border:5px solid #333;
+      border-bottom:none;
+      position:absolute;
+      bottom:0;
+      left:5px;
+    }
+    
+    .floor-window {
+      position:absolute;
+      width:100%;
+      left:0;
+      top:0;
+      bottom:0;
+      right:0;
+      height:100%;
+      
+      &:after, &:before {
+        content:"";
+        position:absolute;
+        display:block;
+        background:#b9f;
+        border:2px solid darkgoldenrod;
+        width:40px;
+        height:50px;
+        top:20px;
+        margin-left:-20px;
+      }
+      &:after {
+        left:80%;
+      }
+      &:before {
+        left:20%;
+      }
+    }
+  }
+}
+.elevator-container {
+  position:absolute;
+  background:#1f0981;
+  width:100px;
+  left:100px;
+  height:100%;
+  z-index: 10;
+  
+  .elevator {
+    width:50px;
+    height:70px;
+    margin-left:-20px;
+    margin-top:7px;
+    left:50%;
+    background:white;
+    border:3px solid #333;
+    border-top-width:10px;
+    position:absolute;
+    
+    &-door {
+      width:100%;
+      height:100%;
+      right:0;
+      position:relative;
+      background:silver;
+      background:radial-gradient(circle at center,
+      rgba(255,255,255,.35),
+      rgba(255,255,255,0) 20%,
+      rgba(255,255,255,0) 21%),
+    radial-gradient(circle at center,
+      rgba(0,0,0,.2),
+      rgba(0,0,0,0) 20%,
+      rgba(0,0,0,0) 21%),
+    radial-gradient(circle farthest-corner at center,
+      grey,
+      lighten(gray,4%));
+	background-size: 7px 7px, 7px 7px, 100% 100%;
+	background-position: 1px 1px, 0px 0px, center center;
+    }
+    &-light {
+      position:absolute;
+      top:-8px;
+      left:50%;
+      border-radius:50%;
+      border:1px solid black;
+      width:8px;
+      height:8px;
+      margin-left:-4px;
+      background:lime;
+    }
+  }
+}
