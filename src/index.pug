@@ -1,0 +1,22 @@
+.handle
+  .display(aria-live="polite") Térreo
+  .buttons
+    each v,i in Array(11)
+      if (i==0)
+        .btn-container.bottom
+          button.btn-floor(data-set-floor=i) T
+      else
+        .btn-container.floor
+          button.btn-floor.floor(data-set-floor=i)= i
+.building
+  .elevator-container
+    .elevator
+      .elevator-door
+      .elevator-light
+  .floors
+    each v,i in Array(11)
+      .floor(data-floor=i)
+        if (i==0)
+          .floor-door
+        else
+          .floor-window
